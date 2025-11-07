@@ -4,18 +4,18 @@ Keep SQL server logins in sync
 .DESCRIPTION
 Checking all nodes in a availability group if all SQL server logins exists. If not it copies all sql server logins to the other servers with the same password hash and same sid
 .PARAMETER DomainFQDN
-FQDN of the domain where the DFS root is e.g. tetra.pec
+FQDN of the domain e.g. mydomain.local
 .PARAMETER SQLAGName
-The name of the sql availability group e.g. tetradbp01jag01
+The name of the sql availability group e.g. FIRSTAG01
 .PARAMETER RunDirectOnSQLServer
 indicates if the script is executed on a SQL Server who is member of the failover cluster of the availability group. If is set to true the SQL server logins will only by syncronized if teh server is the PRIMARY server of the availability group.
 But anyway it will sync the sql server logins betwean all servers of this availability group
 .NOTES
 Created by Daniel Feiler0 2017-12-21
 .EXAMPLE
-.\Copy-SyncSQLUsersOnCluster -DomainFQDN "svc.dev" -SQLAGName "SVCDBP01JAG01" -RunDirectOnSQLServer:$true
+.\Copy-SyncSQLUsersOnCluster -DomainFQDN "mydomain.local" -SQLAGName "FIRSTAG01" -RunDirectOnSQLServer:$true
 .EXAMPLE
-.\Copy-SyncSQLUsersOnCluster -DomainFQDN "svc.dev" -SQLAGName "SVCDBP01JAG01" -RunDirectOnSQLServer:$false
+.\Copy-SyncSQLUsersOnCluster -DomainFQDN "mydomain.local" -SQLAGName "FIRSTAG01" -RunDirectOnSQLServer:$false
 #>
 #Requires -Version 5.0
 #>
